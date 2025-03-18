@@ -1,0 +1,309 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Contact Section</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                }
+                
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: white;
+        }
+        .logo {
+            font-family: 'Old English Text MT', serif;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #008cba;
+        }
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        .nav a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #002147;
+        }
+        /* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropbtn i {
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #001f4d;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Verdana', sans-serif;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #0088a9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn i {
+    transform: rotate(180deg);
+}
+        .contact-btn {
+            background: #008cba;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .heading-container {
+            text-align: left;
+             margin: 40px 60px; 
+        }
+        .main-heading {
+            font-size: 36px;
+            font-weight: bold;
+            color: #001f4d;
+        }
+        .main-heading span {
+            color: #0088a9;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+                .contact-container {
+                    display: flex;
+                    justify-content: center;
+                    gap: 50px;
+                    flex-wrap: wrap;
+                    margin-bottom: 20px;
+                    margin-top: 40px;
+                }
+                .contact-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .contact-item i {
+                    font-size: 34px;
+                    margin-bottom: 10px;
+                }
+                i{
+                    font-size: 34px;
+                }
+                .address {
+                    margin-top: 20px;
+                    font-size: 16px;
+                }
+                h2 {
+            color: #0088a9;
+            font-size: xx-large;
+        }
+        .contact-text {
+            max-width: 800px;
+            margin: auto;
+        }
+        .bold {
+            font-weight: bold;
+        }
+                form {
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .recaptcha {
+            margin-top: 15px;
+        }
+        .privacy {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        .privacy a {
+            color:red;
+            text-decoration: none;
+        }
+        .privacy a:hover {
+            text-decoration: underline;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            text-align: center;
+            background-color: #002147;
+            color: white;
+            height: 10vh;
+        }
+        .foot-p {
+            padding-top: 2%;
+            font-size: medium;
+        }
+            </style>
+        </head>
+        
+    <body>
+        <header class="header">
+            <div class="logo">Pleasant <span>Tours</span></div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="international.html" class="dropbtn">Tour Packages <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="international.html">International</a>
+                        <a href="beach.html">Beach</a>
+                        <a href="forest.html">Forest</a>
+                        <a href="mountain.html">Mountain</a>
+                    </div>
+                </div>
+                <a href="contact.html">Contact Us</a>
+                <a href="about.html">About Us</a>
+            </nav>
+            <button class="contact-btn" onclick="redirectToWhatsApp()">Contact Us Now</button>
+        </header>
+        <div class="heading-container">
+            <marquee behavior="" direction=""><h2 class="main-heading">CONTACT <span>US</span></h2></marquee>
+        </div>
+        <p>If you have questions and would like to contact us, please use one of the options below.</p>
+    
+        <p>We are always here to help you before, during and after your booking with us. <a href="https://www.tours-usa.com" target="_blank">Tours-USA.com</a> has specialists who will answer any questions you may have when booking your tour.</p>
+        
+        <p>Customers who already made a reservation: to send us a message, to make corrections or changes to your order please use your personal Client Login page. Alternatively, please include your surname, name and order number in the subject of your email.</p>
+       <hr>
+        <div class="contact-container">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>Pleasant @ tours.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p> +92-3313145820</p>
+                <p> +92-317 3192197</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-fax"></i>
+                <p> 022-222......</p>
+            </div> 
+            <div class="contact-item">
+                <i class="fab fa-skype"></i>
+                <p>Pleasant-tour - toursselfdrive</p>
+            </div>
+        </div>
+        <div class="address">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Pakistan  Hyderabad  Defence</p>
+            <p> Main Street - near Merich 360</p>
+        </div>
+        <hr>
+        <h2 class="main-heading">CONTACT <span>FORM</span></h2>
+    <div class="contact-text">
+        <p>Do you have any questions about your next trip to USA or Canada?</p>
+        <p>Do you have any comments or experience that you would like to share with us? Please contact us now, our goal is to ensure your complete and total satisfaction.</p>
+        <p class="bold">Please fill out our contact form below. We strive to answer all inquiries within 1 business day, however, most likely you will receive our reply by email within 2-3 hours on a business day.</p>
+    </div>
+        <form>
+            <label for="first-name">First Name*</label>
+            <input type="text" id="first-name" required>
+            
+            <label for="last-name">Last Name*</label>
+            <input type="text" id="last-name" required>
+            
+            <label for="country">Country*</label>
+            <input type="text" id="country" required>
+            
+            <label for="telephone">Telephone*</label>
+            <input type="text" id="telephone" required>
+            
+            <label for="email">Email*</label>
+            <input type="email" id="email" required>
+            
+            <label for="message">Message*</label>
+            <textarea id="message" required></textarea>
+            
+            <div class="recaptcha">
+                <input type="checkbox"> I'm not a robot
+            </div>
+            
+            <p class="privacy">By submitting this form, you are confirming you have read and agreed to our <a href="#">Privacy Policy</a>.</p>
+            
+            <button type="submit" class="submit-btn">SUBMIT NOW</button>
+        </form>
+        <div class="footer"><p class="foot-p">©2025 Pleasant Tour and Travels. All rights reserved.</p></div>
+<script>
+      function redirectToWhatsApp() {
+            const phoneNumber = "+923313145820"; // Replace with your WhatsApp number
+            const message = "Hello, I would like to inquire about your tour packages."; // Predefined message
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.location.href = url; // Redirect to WhatsApp
+        }
+
+</script>
+    </body>
+    </html>

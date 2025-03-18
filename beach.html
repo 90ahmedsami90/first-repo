@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beach Tour Packages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: white;
+        }
+        .logo {
+            font-family: 'Old English Text MT', serif;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #008cba;
+        }
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        .nav a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #002147;
+        }
+        /* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropbtn i {
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #001f4d;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Verdana', sans-serif;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #0088a9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn i {
+    transform: rotate(180deg);
+}
+        .contact-btn {
+            background: #008cba;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .heading-container {
+            text-align: left;
+            margin: 40px 60px;
+        }
+        .main-heading {
+            font-size: 36px;
+            font-weight: bold;
+            color: #001f4d;
+        }
+        .main-heading span {
+            color: #0088a9;
+        }
+        .tour-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px;
+        }
+        .tour-card {
+            background: #f0f9fd;
+            border-top: 4px solid #b3002d;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tour-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .tour-info {
+            padding: 15px;
+        }
+        .tour-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #002147;
+            margin-bottom: 10px;
+        }
+        .tour-description {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .more-details {
+            display: inline-block;
+            background: #002147;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .heading-container {
+        text-align: left;
+        margin: 40px 60px;
+    }
+
+    .main-heading {
+        font-size: 36px;
+        font-weight: bold;
+        color: #001f4d;
+    }
+
+    .main-heading span {
+        color: #0088a9;
+    }
+    
+        .tour-packages {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+    .package-card {
+        position: relative;
+        width: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .package-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    .package-title {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+   
+        .footer {
+            text-align: center;
+            background-color: #002147;
+            color: white;
+            height: 10vh;
+        }
+        .foot-p {
+            padding-top: 2%;
+            font-size: medium;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .tour-container {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .contact-btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Pleasant <span>Tours</span></div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="international.html" class="dropbtn">Tour Packages <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="international.html">International</a>
+                    <a href="beach.html">Beach</a>
+                    <a href="forest.html">Forest</a>
+                    <a href="mountain.html">Mountain</a>
+                </div>
+            </div>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+        </nav>
+        <button class="contact-btn" onclick="redirectToWhatsApp()">Contact Us Now</button>
+    </header>
+    <div class="heading-container">
+        <h2 class="main-heading">BEACH <span>TOUR PACKAGES</span></h2>
+    </div>
+    <div class="tour-container">
+        <!-- Maldives Beach Paradise -->
+        <div class="tour-card">
+            <img src="img/Maldives Beach Paradise.jpeg" alt="Maldives Beach">
+            <div class="tour-info">
+                <div class="tour-title">Maldives Beach Paradise (7 Days)</div>
+                <div class="tour-description">Escape to the pristine beaches of the Maldives. Stay in luxurious overwater bungalows, snorkel in crystal-clear waters, and relax on white sandy beaches. Enjoy romantic sunsets, private dinners on the beach, and explore vibrant coral reefs teeming with marine life.</div>
+                <button class="more-details" onclick="showDetails('Maldives Beach Paradise', '$4000', 'Overwater Bungalows, Coral Reefs, Private Beaches', 'Conrad Maldives Rangali Island', 'Escape to the pristine beaches of the Maldives for a 7-day paradise.')">More Details</button>
+            </div>
+        </div>
+        <!-- Bali Tropical Getaway -->
+        <div class="tour-card">
+            <img src="img/Bali Tropical Getaway.jpeg" alt="Bali Beach">
+            <div class="tour-info">
+                <div class="tour-title">Bali Tropical Getaway (6 Days)</div>
+                <div class="tour-description">Experience the tropical beauty of Bali. Relax on stunning beaches like Seminyak and Nusa Dua, visit ancient temples, and enjoy water sports like surfing and diving. Immerse yourself in Balinese culture with traditional dance performances and local cuisine.</div>
+                <button class="more-details" onclick="showDetails('Bali Tropical Getaway', '$3200', 'Seminyak Beach, Nusa Dua, Uluwatu Temple', 'Four Seasons Resort Bali at Jimbaran Bay', 'Experience the tropical beauty of Bali with this 6-day getaway.')">More Details</button>
+            </div>
+        </div>
+        <!-- Hawaii Island Adventure -->
+        <div class="tour-card">
+            <img src="img/Hawaii Island.jpg" alt="Hawaii Beach">
+            <div class="tour-info">
+                <div class="tour-title">Hawaii Island Adventure (8 Days)</div>
+                <div class="tour-description">Explore the stunning beaches of Hawaii. Visit Waikiki Beach, hike volcanic landscapes, and enjoy water activities like surfing and snorkeling. Experience traditional Hawaiian luaus, explore lush rainforests, and relax on black sand beaches.</div>
+                <button class="more-details" onclick="showDetails('Hawaii Island Adventure', '$4500', 'Waikiki Beach, Volcanoes National Park, Black Sand Beaches', 'Hilton Hawaiian Village Waikiki Beach Resort', 'Explore the stunning beaches of Hawaii with this 8-day adventure.')">More Details</button>
+            </div>
+        </div>
+        <!-- Seychelles Luxury Escape -->
+        <div class="tour-card">
+            <img src="img/Seychelles.webp" alt="Seychelles Beach">
+            <div class="tour-info">
+                <div class="tour-title">Seychelles Luxury Escape (7 Days)</div>
+                <div class="tour-description">Indulge in the luxury of Seychelles. Relax on pristine beaches like Anse Lazio, explore lush jungles, and snorkel in turquoise waters. Enjoy private yacht tours, gourmet dining, and unwind in exclusive beachfront resorts.</div>
+                <button class="more-details" onclick="showDetails('Seychelles Luxury Escape', '$5000', 'Anse Lazio, La Digue Island, Coral Reefs', 'Four Seasons Resort Seychelles', 'Indulge in the luxury of Seychelles with this 7-day escape.')">More Details</button>
+            </div>
+        </div>
+        <!-- Phuket Beach Retreat -->
+        <div class="tour-card">
+            <img src="img/Phuket Beach.webp" alt="Phuket Beach">
+            <div class="tour-info">
+                <div class="tour-title">Phuket Beach Retreat (5 Days)</div>
+                <div class="tour-description">Relax on the beautiful beaches of Phuket. Visit Patong Beach, explore Phi Phi Islands, and enjoy water sports like snorkeling and kayaking. Experience Thai culture with local markets, traditional massages, and delicious street food.</div>
+                <button class="more-details" onclick="showDetails('Phuket Beach Retreat', '$2800', 'Patong Beach, Phi Phi Islands, James Bond Island', 'Banyan Tree Phuket', 'Relax on the beautiful beaches of Phuket with this 5-day retreat.')">More Details</button>
+            </div>
+        </div>
+        <!-- Santorini Island Escape -->
+        <div class="tour-card">
+            <img src="img/Santorini.jpg" alt="Santorini Beach">
+            <div class="tour-info">
+                <div class="tour-title">Santorini Island Escape (6 Days)</div>
+                <div class="tour-description">Discover the charm of Santorini. Relax on unique black and red sand beaches, explore whitewashed villages, and enjoy breathtaking sunsets. Visit ancient ruins, indulge in Greek cuisine, and take a boat tour around the caldera.</div>
+                <button class="more-details" onclick="showDetails('Santorini Island Escape', '$3500', 'Red Beach, Oia Village, Caldera Views', 'Canaves Oia Suites & Spa', 'Discover the charm of Santorini with this 6-day escape.')">More Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="heading-container">
+        <p class="subheading">HOLIDAY PACKAGES</p>
+        <h2 class="main-heading">POPULAR <span>TOUR AREAS</span></h2>
+    </div>
+    <div class="tour-packages">
+        <div class="package-card">
+            <a href="forest.html"> <!-- Link to Forest Tours page -->
+                <img src="img/forest.jpeg" alt="Forest Tours">
+                <div class="package-title">📍 Forest Tours</div>
+            </a>
+        </div>
+        <div class="package-card">
+            <a href="mountain.html"> <!-- Link to Mountain Tours page -->
+                <img src="img/mountain.jpeg" alt="Mountain Tours">
+                <div class="package-title">📍 Mountain Tours</div>
+            </a>
+        </div>
+        <div class="package-card">
+            <a href="beach.html"> <!-- Link to Beaches Tours page -->
+                <img src="img/international.jpeg" alt="Beaches Tours">
+                <div class="package-title">📍 International Tours</div>
+            </a>
+        </div>
+    </div>
+    <div class="footer"><p class="foot-p">©2025 Pleasant Tour and Travels. All rights reserved.</p></div>
+
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p><strong>Price:</strong> <span id="modal-price"></span></p>
+            <p><strong>Visited Places:</strong> <span id="modal-places"></span></p>
+            <p><strong>Hotel:</strong> <span id="modal-hotel"></span></p>
+            <p><strong>Details:</strong> <span id="modal-details"></span></p>
+            <button onclick="downloadTripDetails()" class="more-details">Download Trip Details</button>
+        </div>
+    </div>
+
+    <script>
+        function redirectToWhatsApp() {
+            const phoneNumber = "+923313145820"; // Replace with your WhatsApp number
+            const message = "Hello, I would like to inquire about your tour packages."; // Predefined message
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.location.href = url; // Redirect to WhatsApp
+        }
+
+        function showDetails(title, price, places, hotel, details) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-price').innerText = price;
+            document.getElementById('modal-places').innerText = places;
+            document.getElementById('modal-hotel').innerText = hotel;
+            document.getElementById('modal-details').innerText = details;
+            document.getElementById('modal').style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+
+        function downloadTripDetails() {
+            const title = document.getElementById('modal-title').innerText;
+            const price = document.getElementById('modal-price').innerText;
+            const places = document.getElementById('modal-places').innerText;
+            const hotel = document.getElementById('modal-hotel').innerText;
+            const details = document.getElementById('modal-details').innerText;
+
+            const content = `Trip Details:\n\nTitle: ${title}\nPrice: ${price}\nVisited Places: ${places}\nHotel: ${hotel}\nDetails: ${details}`;
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title.replace(/ /g, '_')}_Trip_Details.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

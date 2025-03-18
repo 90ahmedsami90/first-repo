@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Tour Packages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: white;
+        }
+        .logo {
+            font-family: 'Old English Text MT', serif;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #008cba;
+        }
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+        .nav a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #002147;
+        }
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dropbtn i {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #001f4d;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            font-weight: 900;
+            font-family: 'Verdana', sans-serif;
+            transition: background-color 0.3s;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #0088a9;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+        .contact-btn {
+            background: #008cba;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .heading-container {
+            text-align: left;
+            margin: 40px 60px;
+        }
+        .main-heading {
+            font-size: 36px;
+            font-weight: bold;
+            color: #001f4d;
+        }
+        .main-heading span {
+            color: #0088a9;
+        }
+        .tour-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px;
+        }
+        .tour-card {
+            background: #f0f9fd;
+            border-top: 4px solid #b3002d;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tour-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .tour-info {
+            padding: 15px;
+        }
+        .tour-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #002147;
+            margin-bottom: 10px;
+        }
+        .tour-description {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .more-details {
+            display: inline-block;
+            background: #002147;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .tour-packages {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .package-card {
+            position: relative;
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .package-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .package-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            background-color: #002147;
+            color: white;
+            height: 10vh;
+        }
+        .foot-p {
+            padding-top: 2%;
+            font-size: medium;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .tour-container {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .contact-btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Pleasant <span>Tours</span></div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="international.html" class="dropbtn">Tour Packages <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="international.html">International</a>
+                    <a href="beach.html">Beach</a>
+                    <a href="forest.html">Forest</a>
+                    <a href="mountain.html">Mountain</a>
+                </div>
+            </div>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+        </nav>
+        <button class="contact-btn" onclick="redirectToWhatsApp()">Contact Us Now</button>
+    </header>
+    <div class="heading-container">
+        <h2 class="main-heading">FOREST <span>TOUR PACKAGES</span></h2>
+    </div>
+    <div class="tour-container">
+        <!-- Amazon Rainforest Adventure -->
+        <div class="tour-card">
+            <img src="img/Amazon Rainforest.jpeg" alt="Amazon Rainforest">
+            <div class="tour-info">
+                <div class="tour-title">Amazon Rainforest Adventure (10 Days)</div>
+                <div class="tour-description">Explore the vast Amazon Rainforest, home to diverse wildlife and lush vegetation. Enjoy guided jungle treks, canoe trips, and bird watching. Stay in eco-friendly lodges and learn about the indigenous cultures.</div>
+                <button class="more-details" onclick="showDetails('Amazon Rainforest Adventure', '$3500', 'Jungle Treks, Canoe Trips, Bird Watching', 'Amazon Eco Lodge', 'Explore the vast Amazon Rainforest with this 10-day adventure.')">More Details</button>
+            </div>
+        </div>
+        <!-- Borneo Jungle Expedition -->
+        <div class="tour-card">
+            <img src="img/Borneo Jungle.jpeg" alt="Borneo Jungle">
+            <div class="tour-info">
+                <div class="tour-title">Borneo Jungle Expedition (8 Days)</div>
+                <div class="tour-description">Discover the wild jungles of Borneo. Encounter orangutans, pygmy elephants, and other exotic wildlife. Trek through dense forests, visit traditional villages, and explore the Kinabatangan River.</div>
+                <button class="more-details" onclick="showDetails('Borneo Jungle Expedition', '$3000', 'Orangutan Encounters, Jungle Treks, River Cruises', 'Borneo Rainforest Lodge', 'Discover the wild jungles of Borneo with this 8-day expedition.')">More Details</button>
+            </div>
+        </div>
+        <!-- Costa Rica Rainforest Retreat -->
+        <div class="tour-card">
+            <img src="img/Costa Rica Rainfores.jpeg" alt="Costa Rica Rainforest">
+            <div class="tour-info">
+                <div class="tour-title">Costa Rica Rainforest Retreat (7 Days)</div>
+                <div class="tour-description">Immerse yourself in the lush rainforests of Costa Rica. Enjoy zip-lining, wildlife spotting, and relaxing in natural hot springs. Stay in eco-lodges and explore the Arenal Volcano and Monteverde Cloud Forest.</div>
+                <button class="more-details" onclick="showDetails('Costa Rica Rainforest Retreat', '$2800', 'Zip-lining, Wildlife Spotting, Hot Springs', 'Arenal Nayara Hotel', 'Immerse yourself in the lush rainforests of Costa Rica with this 7-day retreat.')">More Details</button>
+            </div>
+        </div>
+        <!-- Congo Basin Exploration -->
+        <div class="tour-card">
+            <img src="img/Congo Basin.jpeg" alt="Congo Basin">
+            <div class="tour-info">
+                <div class="tour-title">Congo Basin Exploration (9 Days)</div>
+                <div class="tour-description">Venture into the heart of the Congo Basin, the world's second-largest rainforest. Experience guided safaris, river cruises, and visits to local communities. Discover the rich biodiversity and unique ecosystems.</div>
+                <button class="more-details" onclick="showDetails('Congo Basin Exploration', '$4000', 'Safaris, River Cruises, Local Communities', 'Sangha Lodge', 'Venture into the heart of the Congo Basin with this 9-day exploration.')">More Details</button>
+            </div>
+        </div>
+        <!-- Daintree Rainforest Escape -->
+        <div class="tour-card">
+            <img src="img/Daintree Rainforest.jpeg" alt="Daintree Rainforest">
+            <div class="tour-info">
+                <div class="tour-title">Daintree Rainforest Escape (6 Days)</div>
+                <div class="tour-description">Experience the ancient Daintree Rainforest in Australia. Enjoy guided walks, river cruises, and visits to pristine beaches. Stay in luxury eco-lodges and explore the Great Barrier Reef.</div>
+                <button class="more-details" onclick="showDetails('Daintree Rainforest Escape', '$3200', 'Guided Walks, River Cruises, Great Barrier Reef', 'Silky Oaks Lodge', 'Experience the ancient Daintree Rainforest with this 6-day escape.')">More Details</button>
+            </div>
+        </div>
+        <!-- Madagascar Jungle Adventure -->
+        <div class="tour-card">
+            <img src="img/Madagascar Jungle.jpeg" alt="Madagascar Jungle">
+            <div class="tour-info">
+                <div class="tour-title">Madagascar Jungle Adventure (8 Days)</div>
+                <div class="tour-description">Explore the unique jungles of Madagascar, home to lemurs, chameleons, and other endemic species. Trek through national parks, visit local villages, and discover the island's rich biodiversity.</div>
+                <button class="more-details" onclick="showDetails('Madagascar Jungle Adventure', '$3800', 'Lemur Encounters, National Parks, Local Villages', 'Masoala Forest Lodge', 'Explore the unique jungles of Madagascar with this 8-day adventure.')">More Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="heading-container">
+        <p class="subheading">HOLIDAY PACKAGES</p>
+        <h2 class="main-heading">POPULAR <span>TOUR AREAS</span></h2>
+    </div>
+    <div class="tour-packages">
+        <div class="package-card">
+            <a href="forest.html"> <!-- Link to Forest Tours page -->
+                <img src="img/beaches.webp" alt="beach Tours">
+                <div class="package-title">📍 Beach Tours</div>
+            </a>
+        </div>
+        <div class="package-card">
+            <a href="mountain.html"> <!-- Link to Mountain Tours page -->
+                <img src="img/mountain.jpeg" alt="Mountain Tours">
+                <div class="package-title">📍 Mountain Tours</div>
+            </a>
+        </div>
+        <div class="package-card">
+            <a href="beach.html"> <!-- Link to Beaches Tours page -->
+                <img src="img/international.jpeg" alt="Beaches Tours">
+                <div class="package-title">📍 International Tours</div>
+            </a>
+        </div>
+    </div>
+    <div class="footer"><p class="foot-p">©2025 Pleasant Tour and Travels. All rights reserved.</p></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p><strong>Price:</strong> <span id="modal-price"></span></p>
+            <p><strong>Visited Places:</strong> <span id="modal-places"></span></p>
+            <p><strong>Hotel:</strong> <span id="modal-hotel"></span></p>
+            <p><strong>Details:</strong> <span id="modal-details"></span></p>
+            <button onclick="downloadTripDetails()" class="more-details">Download Trip Details</button>
+        </div>
+    </div>
+
+    <script>
+       function redirectToWhatsApp() {
+            const phoneNumber = "+923313145820"; // Replace with your WhatsApp number
+            const message = "Hello, I would like to inquire about your tour packages."; // Predefined message
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.location.href = url; // Redirect to WhatsApp
+        }
+
+        function showDetails(title, price, places, hotel, details) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-price').innerText = price;
+            document.getElementById('modal-places').innerText = places;
+            document.getElementById('modal-hotel').innerText = hotel;
+            document.getElementById('modal-details').innerText = details;
+            document.getElementById('modal').style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+
+        function downloadTripDetails() {
+            const title = document.getElementById('modal-title').innerText;
+            const price = document.getElementById('modal-price').innerText;
+            const places = document.getElementById('modal-places').innerText;
+            const hotel = document.getElementById('modal-hotel').innerText;
+            const details = document.getElementById('modal-details').innerText;
+
+            const content = `Trip Details:\n\nTitle: ${title}\nPrice: ${price}\nVisited Places: ${places}\nHotel: ${hotel}\nDetails: ${details}`;
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title.replace(/ /g, '_')}_Trip_Details.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
